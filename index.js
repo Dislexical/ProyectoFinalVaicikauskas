@@ -20,14 +20,14 @@ function sumar() {
         if (isNaN(numeroA)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroA)); // Repetir hasta que se ingrese un número válido
+    } while (isNaN(numeroA)); 
 
     do {
         numeroB = parseFloat(prompt("Ingrese el otro numero"));
         if (isNaN(numeroB)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroB)); // Repetir hasta que se ingrese un número válido
+    } while (isNaN(numeroB)); 
 
     const resultado = numeroA + numeroB;
     alert(numeroA + " + " + numeroB + " = " + resultado);
@@ -95,14 +95,14 @@ function dividir() {
         if (isNaN(numeroA)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroA) || numeroA === 0);  // Añadido control para evitar división por cero
+    } while (isNaN(numeroA) || numeroA === 0);
 
     do {
         numeroB = parseFloat(prompt("Ingrese el otro numero"));
         if (isNaN(numeroB) || numeroB === 0) {
             alert("Por favor, ingrese un número válido y diferente de cero.");
         }
-    } while (isNaN(numeroB) || numeroB === 0);  // Añadido control para evitar división por cero
+    } while (isNaN(numeroB) || numeroB === 0);
 
     const resultado = numeroA / numeroB;
     alert(numeroA + " / " + numeroB + " = " + resultado);
@@ -217,7 +217,7 @@ function sumarResultados() {
 }
 
 // variables.
-let opcion = parseInt(prompt("Elija una opción: \n 1-sumar \n 2-restar \n 3-multiplicar \n 4-dividir \n 5-potenciar \n 6-raiz cuadrada \n 7-porcentaje \n 8-obtener cuadrados \n 9-sumar resultados \n 10-ver historial \n 11-salir "));
+let opcion = parseInt(prompt("Elija una opción: \n 1-ssumar \n 2-restar \n 3-multiplicar \n 4-dividir \n 5-potenciar \n 6-raiz cuadrada \n 7-porcentaje \n 8-obtener cuadrados \n 9-sumar resultados \n 10-ver historial \n 11-salir "));
 
 while (opcion !== 9) {
     switch (opcion) {
