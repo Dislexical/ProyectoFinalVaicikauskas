@@ -187,7 +187,7 @@ function verHistorial(){
 
     if (filtrado.length === 0) {
         alert("No hay operaciones para el símbolo seleccionado.");
-        return; // Sale de la función si no hay operaciones para mostrar.
+        return;
     }
 
     let mensaje = '';
@@ -207,7 +207,6 @@ function obtenerCuadradosDeResultados() {
     alert("Cuadrados de resultados en el historial: " + cuadrados.join(', '));
 }
 
-// Función de reducción
 function reducir(lista, funcionReduccion, valorInicial) {
     return lista.reduce(funcionReduccion, valorInicial);
 }
@@ -243,7 +242,7 @@ while (opcion !== 9) {
         case 7:
             porcentaje();
             break;
-        case 8: // Opción adicional
+        case 8:
             obtenerCuadradosDeResultados();
             break;
         case 9:
