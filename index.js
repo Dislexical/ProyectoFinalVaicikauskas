@@ -1,14 +1,26 @@
-// funciones y array
-
+//calculadora
 const historial = [];
 
-class Operacion{
-    constructor(simbolo, numeroA, numeroB, resultado){
+class Operacion {
+    constructor(simbolo, numeroA, numeroB, resultado) {
         this.simbolo = simbolo;
         this.numeroA = numeroA;
         this.numeroB = numeroB;
-        this.resultado = resultado
-    }    
+        this.resultado = resultado;
+    }
+}
+// funciones
+function guardarHistorial() {
+    localStorage.setItem('historial', JSON.stringify(historial));
+}
+
+function cargarHistorial() {
+    const historialGuardado = JSON.parse(localStorage.getItem('historial')) || [];
+    historial.push(...historialGuardado);
+}
+
+function actualizarUI(resultado) {
+
 }
 
 function sumar() {
@@ -16,24 +28,26 @@ function sumar() {
     let numeroB;
 
     do {
-        numeroA = parseFloat(prompt("Ingrese primer numero"));
+        numeroA = parseFloat(prompt("Ingrese primer número"));
         if (isNaN(numeroA)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroA)); 
+    } while (isNaN(numeroA));
 
     do {
-        numeroB = parseFloat(prompt("Ingrese el otro numero"));
+        numeroB = parseFloat(prompt("Ingrese el otro número"));
         if (isNaN(numeroB)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroB)); 
+    } while (isNaN(numeroB));
 
     const resultado = numeroA + numeroB;
-    alert(numeroA + " + " + numeroB + " = " + resultado);
+    alert(`${numeroA} + ${numeroB} = ${resultado}`);
 
     const operacion = new Operacion("+", numeroA, numeroB, resultado);
     historial.push(operacion);
+    guardarHistorial();
+    actualizarUI(resultado);
 }
 
 function restar() {
@@ -41,24 +55,26 @@ function restar() {
     let numeroB;
 
     do {
-        numeroA = parseFloat(prompt("Ingrese primer numero"));
+        numeroA = parseFloat(prompt("Ingrese primer número"));
         if (isNaN(numeroA)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroA)); 
+    } while (isNaN(numeroA));
 
     do {
-        numeroB = parseFloat(prompt("Ingrese el otro numero"));
+        numeroB = parseFloat(prompt("Ingrese el otro número"));
         if (isNaN(numeroB)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroB)); 
+    } while (isNaN(numeroB));
 
     const resultado = numeroA - numeroB;
-    alert(numeroA + " - " + numeroB + " = " + resultado);
+    alert(`${numeroA} - ${numeroB} = ${resultado}`);
 
     const operacion = new Operacion("-", numeroA, numeroB, resultado);
     historial.push(operacion);
+    guardarHistorial();
+    actualizarUI(resultado);
 }
 
 function multiplicar() {
@@ -66,24 +82,26 @@ function multiplicar() {
     let numeroB;
 
     do {
-        numeroA = parseFloat(prompt("Ingrese primer numero"));
+        numeroA = parseFloat(prompt("Ingrese primer número"));
         if (isNaN(numeroA)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroA)); 
+    } while (isNaN(numeroA));
 
     do {
-        numeroB = parseFloat(prompt("Ingrese el otro numero"));
+        numeroB = parseFloat(prompt("Ingrese el otro número"));
         if (isNaN(numeroB)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroB)); 
+    } while (isNaN(numeroB));
 
     const resultado = numeroA * numeroB;
-    alert(numeroA + " * " + numeroB + " = " + resultado);
+    alert(`${numeroA} * ${numeroB} = ${resultado}`);
 
     const operacion = new Operacion("*", numeroA, numeroB, resultado);
     historial.push(operacion);
+    guardarHistorial();
+    actualizarUI(resultado);
 }
 
 function dividir() {
@@ -91,24 +109,26 @@ function dividir() {
     let numeroB;
 
     do {
-        numeroA = parseFloat(prompt("Ingrese primer numero"));
+        numeroA = parseFloat(prompt("Ingrese primer número"));
         if (isNaN(numeroA)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroA) || numeroA === 0);
+    } while (isNaN(numeroA));
 
     do {
-        numeroB = parseFloat(prompt("Ingrese el otro numero"));
+        numeroB = parseFloat(prompt("Ingrese el otro número"));
         if (isNaN(numeroB) || numeroB === 0) {
             alert("Por favor, ingrese un número válido y diferente de cero.");
         }
     } while (isNaN(numeroB) || numeroB === 0);
 
     const resultado = numeroA / numeroB;
-    alert(numeroA + " / " + numeroB + " = " + resultado);
+    alert(`${numeroA} / ${numeroB} = ${resultado}`);
 
     const operacion = new Operacion("/", numeroA, numeroB, resultado);
     historial.push(operacion);
+    guardarHistorial();
+    actualizarUI(resultado);
 }
 
 function potenciar() {
@@ -120,20 +140,22 @@ function potenciar() {
         if (isNaN(numeroA)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroA)); 
+    } while (isNaN(numeroA));
 
     do {
         numeroB = parseFloat(prompt("Ingrese el exponente"));
         if (isNaN(numeroB)) {
             alert("Por favor, ingrese un número válido.");
         }
-    } while (isNaN(numeroB)); 
+    } while (isNaN(numeroB));
 
     const resultado = Math.pow(numeroA, numeroB);
-    alert(numeroA + " ^ " + numeroB + " = " + resultado);
+    alert(`${numeroA} ^ ${numeroB} = ${resultado}`);
 
     const operacion = new Operacion("^", numeroA, numeroB, resultado);
     historial.push(operacion);
+    guardarHistorial();
+    actualizarUI(resultado);
 }
 
 function raizCuadrada() {
@@ -147,10 +169,12 @@ function raizCuadrada() {
     } while (isNaN(numeroA) || numeroA < 0);
 
     const resultado = Math.sqrt(numeroA);
-    alert("√" + numeroA + " = " + resultado);
+    alert(`√${numeroA} = ${resultado}`);
 
     const operacion = new Operacion("√", numeroA, null, resultado);
     historial.push(operacion);
+    guardarHistorial();
+    actualizarUI(resultado);
 }
 
 function porcentaje() {
@@ -172,14 +196,16 @@ function porcentaje() {
     } while (isNaN(numeroB));
 
     const resultado = (numeroA * numeroB) / 100;
-    alert(numeroB + "% de " + numeroA + " = " + resultado);
+    alert(`${numeroB}% de ${numeroA} = ${resultado}`);
 
     const operacion = new Operacion("%", numeroA, numeroB, resultado);
     historial.push(operacion);
+    guardarHistorial();
+    actualizarUI(resultado);
 }
 
 function verHistorial(){
-    const simbolo = prompt("Elija un simbolo para filtrar historial: \n + sumas \n - restas \n * multipliciones \n / divisiones \n ^ potenciaciones \n √ raízes cuadradas \n % porcentajes");
+    const simbolo = prompt("Elija un símbolo para filtrar historial: \n + sumas \n - restas \n * multiplicaciones \n / divisiones \n ^ potenciaciones \n √ raíces cuadradas \n % porcentajes");
 
     const filtrado = historial.filter((elemento) => {
         return elemento.simbolo === simbolo;
@@ -198,65 +224,46 @@ function verHistorial(){
     alert(mensaje);
 }
 
-function mapear(lista, funcionTransformacion) {
-    return lista.map(funcionTransformacion);
-}
-
 function obtenerCuadradosDeResultados() {
-    const cuadrados = mapear(historial, (operacion) => operacion.resultado * operacion.resultado);
+    const cuadrados = historial.map((operacion) => operacion.resultado * operacion.resultado);
     alert("Cuadrados de resultados en el historial: " + cuadrados.join(', '));
 }
 
-function reducir(lista, funcionReduccion, valorInicial) {
-    return lista.reduce(funcionReduccion, valorInicial);
-}
-
 function sumarResultados() {
-    const sumaTotal = reducir(historial, (acumulador, operacion) => acumulador + operacion.resultado, 0);
+    const sumaTotal = historial.reduce((acumulador, operacion) => acumulador + operacion.resultado, 0);
     alert("La suma total de todos los resultados en el historial es: " + sumaTotal);
 }
 
-// variables.
-let opcion = parseInt(prompt("Elija una opción: \n 1-ssumar \n 2-restar \n 3-multiplicar \n 4-dividir \n 5-potenciar \n 6-raiz cuadrada \n 7-porcentaje \n 8-obtener cuadrados \n 9-sumar resultados \n 10-ver historial \n 11-salir "));
+// combierte las function para que se hagan botones
+const sumarBtn = document.getElementById('sumarBtn');
+sumarBtn.addEventListener('click', sumar);
 
-while (opcion !== 9) {
-    switch (opcion) {
-        case 1:
-            sumar();
-            break;
-        case 2:
-            restar();
-            break;
-        case 3:
-            multiplicar();
-            break;
-        case 4:
-            dividir();
-            break;
-        case 5:
-            potenciar();
-            break;
-        case 6:
-            raizCuadrada();
-            break;
-        case 7:
-            porcentaje();
-            break;
-        case 8:
-            obtenerCuadradosDeResultados();
-            break;
-        case 9:
-            sumarResultados();
-            break;
-        case 10:
-            verHistorial();
-            break;
-        default:
-            alert("Opcion incorrecta");
-            break;
-    }
+const restarBtn = document.getElementById('restarBtn');
+restarBtn.addEventListener('click', restar);
 
-    opcion = parseInt(prompt("Elija una opción: \n 1-sumar \n 2-restar \n 3-multiplicar \n 4-dividir \n 5-potenciar \n 6-raiz cuadrada \n 7-porcentaje \n 8-obtener cuadrados \n 9-sumar resultados \n 10-ver historial \n 11-salir "));
-}
+const multiplicarBtn = document.getElementById('multiplicarBtn');
+multiplicarBtn.addEventListener('click', multiplicar);
 
-alert("Finalizando programa, enter para cerrar");
+const dividirBtn = document.getElementById('dividirBtn');
+dividirBtn.addEventListener('click', dividir);
+
+const potenciarBtn = document.getElementById('potenciarBtn');
+potenciarBtn.addEventListener('click', potenciar);
+
+const raizCuadradaBtn = document.getElementById('raizCuadradaBtn');
+raizCuadradaBtn.addEventListener('click', raizCuadrada);
+
+const porcentajeBtn = document.getElementById('porcentajeBtn');
+porcentajeBtn.addEventListener('click', porcentaje);
+
+const verHistorialBtn = document.getElementById('verHistorialBtn');
+verHistorialBtn.addEventListener('click', verHistorial);
+
+const obtenerCuadradosBtn = document.getElementById('obtenerCuadradosBtn');
+obtenerCuadradosBtn.addEventListener('click', obtenerCuadradosDeResultados);
+
+const sumarResultadosBtn = document.getElementById('sumarResultadosBtn');
+sumarResultadosBtn.addEventListener('click', sumarResultados);
+
+// carga el historial
+cargarHistorial();
