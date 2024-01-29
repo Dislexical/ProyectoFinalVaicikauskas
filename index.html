@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/">
     <title>Calculadora</title>
     <link rel="shortcut icon" href="./img/fotocalcu.jpg">
 </head>
@@ -11,21 +11,26 @@
 
     <div class="calculator">
         <div class="buttons">
-            <button id="sumarBtn">+</button>
-            <button id="restarBtn">-</button>
-            <button id="multiplicarBtn">*</button>
+            <select id="operacionSelect">
+                <option value="sumar">Sumar (+)</option>
+                <option value="restar">Restar (-)</option>
+                <option value="multiplicar">Multiplicar (*)</option>
+                <option value="dividir">Dividir (/)</option>
+                <option value="potenciar">Potenciar (^)</option>
+                <option value="raizCuadrada">Raíz Cuadrada (√)</option>
+                <option value="porcentaje">Porcentaje (%)</option>
+            </select>
             <br>
-            <button id="dividirBtn">/</button>
-            <button id="potenciarBtn">^</button>
-            <button id="raizCuadradaBtn">√</button>
+            <input type="number" id="numeroA" placeholder="Primer número">
+            <input type="number" id="numeroB" placeholder="Segundo número">
+            <button id="calcularBtn">Calcular</button>
             <br>
-            <button id="porcentajeBtn">%</button>
-            <button id="verHistorialBtn" class="boton2">=</button>
-            <button id="obtenerCuadradosBtn" class="boton2">=^2</button>
+            <button id="verHistorialBtn" class="boton2">Ver Historial</button>
+            <button id="borrarHistorialBtn" class="boton2">Borrar Historial</button>
         </div>
-        <div class="cuadrado">
-            <h1>hola, haz el calculo que quieres hacer</h1>
-            <p>en esta calculadora debes primero elejir el tipo de operacion que quieres hacer, y luego ingresar el primer y segundo numero</p>
+        <div class="cuadrado" id="historialContainer">
+            <h1>¡Hola Ignacio! ¿Cómo estás?</h1>
+            <p>Aquí puedes realizar tus cálculos y ver el historial.</p>
         </div>
     </div>
 

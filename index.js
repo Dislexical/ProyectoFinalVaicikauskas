@@ -1,4 +1,4 @@
-//calculadora
+// Calculadora
 const historial = [];
 
 class Operacion {
@@ -9,7 +9,8 @@ class Operacion {
         this.resultado = resultado;
     }
 }
-// funciones
+
+// Funciones
 function guardarHistorial() {
     localStorage.setItem('historial', JSON.stringify(historial));
 }
@@ -19,8 +20,11 @@ function cargarHistorial() {
     historial.push(...historialGuardado);
 }
 
-function actualizarUI(resultado) {
-
+function mostrarHistorial() {
+    historialContainer.innerHTML = '<h1>Historial de Cálculos</h1>';
+    historial.forEach((operacion) => {
+        historialContainer.innerHTML += `<p>${operacion.numeroA} ${operacion.simbolo} ${operacion.numeroB} = ${operacion.resultado}</p>`;
+    });
 }
 
 function sumar() {
@@ -47,7 +51,7 @@ function sumar() {
     const operacion = new Operacion("+", numeroA, numeroB, resultado);
     historial.push(operacion);
     guardarHistorial();
-    actualizarUI(resultado);
+    mostrarHistorial();
 }
 
 function restar() {
@@ -74,7 +78,7 @@ function restar() {
     const operacion = new Operacion("-", numeroA, numeroB, resultado);
     historial.push(operacion);
     guardarHistorial();
-    actualizarUI(resultado);
+    mostrarHistorial();
 }
 
 function multiplicar() {
@@ -101,7 +105,7 @@ function multiplicar() {
     const operacion = new Operacion("*", numeroA, numeroB, resultado);
     historial.push(operacion);
     guardarHistorial();
-    actualizarUI(resultado);
+    mostrarHistorial();
 }
 
 function dividir() {
@@ -128,7 +132,7 @@ function dividir() {
     const operacion = new Operacion("/", numeroA, numeroB, resultado);
     historial.push(operacion);
     guardarHistorial();
-    actualizarUI(resultado);
+    mostrarHistorial();
 }
 
 function potenciar() {
@@ -155,7 +159,7 @@ function potenciar() {
     const operacion = new Operacion("^", numeroA, numeroB, resultado);
     historial.push(operacion);
     guardarHistorial();
-    actualizarUI(resultado);
+    mostrarHistorial();
 }
 
 function raizCuadrada() {
@@ -174,7 +178,7 @@ function raizCuadrada() {
     const operacion = new Operacion("√", numeroA, null, resultado);
     historial.push(operacion);
     guardarHistorial();
-    actualizarUI(resultado);
+    mostrarHistorial();
 }
 
 function porcentaje() {
@@ -201,27 +205,11 @@ function porcentaje() {
     const operacion = new Operacion("%", numeroA, numeroB, resultado);
     historial.push(operacion);
     guardarHistorial();
-    actualizarUI(resultado);
+    mostrarHistorial();
 }
 
 function verHistorial(){
-    const simbolo = prompt("Elija un símbolo para filtrar historial: \n + sumas \n - restas \n * multiplicaciones \n / divisiones \n ^ potenciaciones \n √ raíces cuadradas \n % porcentajes");
-
-    const filtrado = historial.filter((elemento) => {
-        return elemento.simbolo === simbolo;
-    });
-
-    if (filtrado.length === 0) {
-        alert("No hay operaciones para el símbolo seleccionado.");
-        return;
-    }
-
-    let mensaje = '';
-    filtrado.forEach((operacion) => {
-        mensaje = mensaje + operacion.numeroA + operacion.simbolo + operacion.numeroB + " = " + operacion.resultado + '\n';
-    });
-
-    alert(mensaje);
+    // Esta función se ha integrado en el evento del botón correspondiente.
 }
 
 function obtenerCuadradosDeResultados() {
@@ -234,36 +222,53 @@ function sumarResultados() {
     alert("La suma total de todos los resultados en el historial es: " + sumaTotal);
 }
 
-// combierte las function para que se hagan botones
-const sumarBtn = document.getElementById('sumarBtn');
-sumarBtn.addEventListener('click', sumar);
-
-const restarBtn = document.getElementById('restarBtn');
-restarBtn.addEventListener('click', restar);
-
-const multiplicarBtn = document.getElementById('multiplicarBtn');
-multiplicarBtn.addEventListener('click', multiplicar);
-
-const dividirBtn = document.getElementById('dividirBtn');
-dividirBtn.addEventListener('click', dividir);
-
-const potenciarBtn = document.getElementById('potenciarBtn');
-potenciarBtn.addEventListener('click', potenciar);
-
-const raizCuadradaBtn = document.getElementById('raizCuadradaBtn');
-raizCuadradaBtn.addEventListener('click', raizCuadrada);
-
-const porcentajeBtn = document.getElementById('porcentajeBtn');
-porcentajeBtn.addEventListener('click', porcentaje);
-
+// Obtener referencias a elementos del DOM
+const operacionSelect = document.getElementById('operacionSelect');
+const numeroAInput = document.getElementById('numeroA');
+const numeroBInput = document.getElementById('numeroB');
+const calcularBtn = document.getElementById('calcularBtn');
 const verHistorialBtn = document.getElementById('verHistorialBtn');
-verHistorialBtn.addEventListener('click', verHistorial);
+const borrarHistorialBtn = document.getElementById('borrarHistorialBtn');
+const historialContainer = document.getElementById('historialContainer');
 
-const obtenerCuadradosBtn = document.getElementById('obtenerCuadradosBtn');
-obtenerCuadradosBtn.addEventListener('click', obtenerCuadradosDeResultados);
+// Evento al hacer clic en el botón "Calcular"
+calcularBtn.addEventListener('click', () => {
+    const selectedOperation = operacionSelect.value;
+    const numeroA = parseFloat(numeroAInput.value);
+    const numeroB = parseFloat(numeroBInput.value);
 
-const sumarResultadosBtn = document.getElementById('sumarResultadosBtn');
-sumarResultadosBtn.addEventListener('click', sumarResultados);
+    // Validaciones
+    if (isNaN(numeroA) || isNaN(numeroB)) {
+        alert('Por favor, ingrese números válidos.');
+        return;
+    }
 
-// carga el historial
+    let resultado;
+
+    // Realizar operación seleccionada
+    switch (selectedOperation) {
+        case 'sumar':
+            resultado = numeroA + numeroB;
+            break;
+        // ... (resto de los casos)
+    }
+
+    // Mostrar resultado en el historial
+    const operacion = new Operacion(selectedOperation, numeroA, numeroB, resultado);
+    historial.push(operacion);
+    guardarHistorial();
+    mostrarHistorial();
+});
+
+// Evento al hacer clic en el botón "Ver Historial"
+verHistorialBtn.addEventListener('click', mostrarHistorial);
+
+// Evento al hacer clic en el botón "Borrar Historial"
+borrarHistorialBtn.addEventListener('click', () => {
+    historial.length = 0;
+    guardarHistorial();
+    mostrarHistorial();
+});
+
+// Cargar historial al inicio
 cargarHistorial();
