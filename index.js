@@ -222,7 +222,7 @@ function sumarResultados() {
     alert("La suma total de todos los resultados en el historial es: " + sumaTotal);
 }
 
-// Obtener referencias a elementos del DOM
+// Obtener referencias de los elementos DOM
 const operacionSelect = document.getElementById('operacionSelect');
 const numeroAInput = document.getElementById('numeroA');
 const numeroBInput = document.getElementById('numeroB');
@@ -245,7 +245,7 @@ calcularBtn.addEventListener('click', () => {
 
     let resultado;
 
-    // Realizar operación seleccionada
+    // Realiza operación seleccionada
     switch (selectedOperation) {
         case 'sumar':
             resultado = numeroA + numeroB;
@@ -277,17 +277,17 @@ calcularBtn.addEventListener('click', () => {
             return;
     }
 
-    // Mostrar resultado en el historial
+    // Muestra resultado en el historial
     const operacion = new Operacion(selectedOperation, numeroA, numeroB, resultado);
     historial.push(operacion);
     guardarHistorial();
     mostrarHistorial();
 });
 
-// Evento al hacer clic en el botón "Ver Historial"
+// Evento
 verHistorialBtn.addEventListener('click', mostrarHistorial);
 
-// Evento al hacer clic en el botón "Borrar Historial"
+// Evento
 borrarHistorialBtn.addEventListener('click', () => {
     historial.length = 0;
     guardarHistorial();
