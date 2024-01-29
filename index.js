@@ -250,7 +250,31 @@ calcularBtn.addEventListener('click', () => {
         case 'sumar':
             resultado = numeroA + numeroB;
             break;
-        // ... (resto de los casos)
+        case 'restar':
+            resultado = numeroA - numeroB;
+            break;
+        case 'multiplicar':
+            resultado = numeroA * numeroB;
+            break;
+        case 'dividir':
+            if (numeroB === 0) {
+                alert('No se puede dividir por cero.');
+                return;
+            }
+            resultado = numeroA / numeroB;
+            break;
+        case 'potenciar':
+            resultado = Math.pow(numeroA, numeroB);
+            break;
+        case 'raizCuadrada':
+            resultado = Math.sqrt(numeroA);
+            break;
+        case 'porcentaje':
+            resultado = (numeroA * numeroB) / 100;
+            break;
+        default:
+            alert('Operación no reconocida.');
+            return;
     }
 
     // Mostrar resultado en el historial
