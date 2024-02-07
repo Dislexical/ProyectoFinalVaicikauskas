@@ -1,53 +1,104 @@
-* {
-    font-family: arial, sans-seri;
-    background-color: rgb(118, 118, 118);
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-h1, p {
-    color: white;
-    background-color: rgb(33,32,33);
-    text-align: center;
-}
-
-.cuadrado {
-    background-color: rgb(33,32,33);
-    width: 295px;
-    height: 165px;
-    top: 150px;
-    left: 50%;
-    position: center;
-    top: 95px;
-}
-
-button {
-    color: white;
-    text-align: center;
-    background-color: rgb(59, 58, 58);
-    width: 95px;
-    height: 95px;
-    font-size: 35px;
-    border: 0px solid #000;
-    margin-top: 5px;
+.calculator {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
 }
 
 .buttons {
-    margin-top: 200px;
-    position: absolute;
     text-align: center;
-    
-    background-color: rgb(33,32,33);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.numeric-keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.key {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.change-input {
+    background-color: #ff9500;
+    color: white;
+}
+
+#calcularBtn {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0078d4;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .boton2 {
-    background-color: rgb(90, 89, 89);
+    width: 49%;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    cursor: pointer;
 }
-.calculator {
-    background-color: rgb(33,32,33);
-    display: block;
-    margin: 0 auto;
-    padding: 25px;
-    width: 300px;
-    height: 500px;
-    border-radius: 35px;
-    border: 2px solid #000;
-}   
+
+.cuadrado {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    display: none;
+}
+
+#historialList {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+
+.history-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    margin-top: 20px; 
+}
+
+.history-box {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px; 
+}

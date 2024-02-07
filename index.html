@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/">
     <title>Calculadora</title>
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./img/fotocalcu.jpg">
 </head>
 <body>
@@ -21,16 +21,32 @@
                 <option value="porcentaje">Porcentaje (%)</option>
             </select>
             <br>
-            <input type="number" id="numeroA" placeholder="Primer número">
-            <input type="number" id="numeroB" placeholder="Segundo número">
+            <input type="text" id="numeroA" placeholder="Primer número">
+            <input type="text" id="numeroB" placeholder="Segundo número">
+            <div class="numeric-keypad">
+                <button class="key" onclick="addToInput(1)">1</button>
+                <button class="key" onclick="addToInput(2)">2</button>
+                <button class="key" onclick="addToInput(3)">3</button>
+                <button class="key" onclick="addToInput(4)">4</button>
+                <button class="key" onclick="addToInput(5)">5</button>
+                <button class="key" onclick="addToInput(6)">6</button>
+                <button class="key" onclick="addToInput(7)">7</button>
+                <button class="key" onclick="addToInput(8)">8</button>
+                <button class="key" onclick="addToInput(9)">9</button>
+                <button class="change-input" id="changeInputBtn">↻</button>
+                <button class="key" onclick="addToInput(0)">0</button>
+                <button class="key" onclick="clearInput()">C</button>
+            </div>
             <button id="calcularBtn">Calcular</button>
             <br>
             <button id="verHistorialBtn" class="boton2">Ver Historial</button>
             <button id="borrarHistorialBtn" class="boton2">Borrar Historial</button>
         </div>
-        <div class="cuadrado" id="historialContainer">
-            <h1>¡Hola Ignacio! ¿Cómo estás?</h1>
-            <p>Aquí puedes realizar tus cálculos y ver el historial.</p>
+
+    <div class="history-container">
+        <div class="history-box" id="historialContainer">
+            <h1>Historial de Cálculos</h1>
+            <ul id="historialList"></ul>
         </div>
     </div>
 
